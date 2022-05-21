@@ -1,0 +1,27 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  example:
+    runs-on: ${{ matrix.runsOn }}
+    env:
+      DEVELOPER_DIR: "/Applications/${{ matrix.xcode }}/Contents/Developer"
+    strategy:
+      matrix:
+        include:
+          - xcode: "Xcode_12.5.1.app"
+            runsOn: macOS-11
+          - xcode: "Xcode_13.2.1.app"
+            runsOn: macOS-12
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: xcodebuild -project ./Example/Example.xcodeproj -scheme Example test -destination platform='iOS Simulator',name='iPhone 11' -quiet -enableCodeCoverage YES -derivedDataPath "./output"

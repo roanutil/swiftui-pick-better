@@ -1,0 +1,9 @@
+--extensionacl on-declarations
+--redundanttype explicit
+--swiftversion 5.5
+--maxwidth 120
+--header "{file}\nPickBetter\n\nCopyright © {year} MFB Technologies, Inc. All rights reserved. All rights reserved.\n\nThis source code is licensed under the MIT license found in the\nLICENSE file in the root directory of this source tree."
+--allman false
+--exclude **/*/output
+--wraparguments before-first
+--wrapcollections before-first

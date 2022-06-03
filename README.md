@@ -1,3 +1,6 @@
+![Test](https://github.com/MFB-Technologies-Inc/swiftui-pick-better/actions/workflows/test.yml/badge.svg)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FMFB-Technologies-Inc%2Fswiftui-pick-better%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/MFB-Technologies-Inc/swiftui-pick-better)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FMFB-Technologies-Inc%2Fswiftui-pick-better%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/MFB-Technologies-Inc/swiftui-pick-better)
 # BetterPicker
 
 An alternative to SwiftUI's `Picker` that supports custom styles.

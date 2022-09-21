@@ -36,16 +36,18 @@ public struct PlainInlineBetterPickerStyle: BetterPickerStyle {
 }
 
 #if DEBUG
-    private struct PreviewItem: Identifiable {
+    private struct PreviewItem: Identifiable, Sendable {
         let id: String
     }
 
+    @MainActor
     private var items: [PreviewItem] = ["A", "B", "C"].map { PreviewItem(id: $0) }
 
     private func itemContent(_ item: PreviewItem) -> some View {
         Text(item.id)
     }
 
+    @MainActor
     struct PlainInlineBetterPickerStyle_Previews: PreviewProvider {
         static var previews: some View {
             Group {
@@ -56,6 +58,7 @@ public struct PlainInlineBetterPickerStyle: BetterPickerStyle {
         }
     }
 
+    @MainActor
     private struct OptionalSelectionPreview: View {
         @State private var selection: PreviewItem.ID? = nil
 
@@ -68,6 +71,7 @@ public struct PlainInlineBetterPickerStyle: BetterPickerStyle {
         }
     }
 
+    @MainActor
     private struct SingleSelectionPreview: View {
         @State private var selection: PreviewItem.ID = items.first!.id
 
@@ -80,6 +84,7 @@ public struct PlainInlineBetterPickerStyle: BetterPickerStyle {
         }
     }
 
+    @MainActor
     private struct MultiSelectionPreview: View {
         @State private var selection: Set<PreviewItem.ID> = []
 

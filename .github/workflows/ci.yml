@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: macos-13
+    environment: default
+    steps:
+      - uses: actions/checkout@v3
+      - name: Format lint
+        run: swiftformat --lint .
+      - name: Lint
+        run: swiftlint .
+  ui-tests:
+    strategy:
+      matrix:
+        include:
+          - os: macos-12
+            xcode: 13.2.1 # Swift 5.5.2
+            sim: iPhone 13
+          - os: macos-12
+            xcode: 13.4.1 # Swift 5.6
+            sim: iPhone 13
+          - os: macos-13
+            xcode: 14.2 # Swift 5.7
+            sim: iPhone 14
+          - os: macos-13
+            xcode: 14.3 # Swift 5.8
+            sim: iPhone 14
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Select Xcode ${{ matrix.xcode }}
+        run: sudo xcode-select -s /Applications/Xcode_${{ matrix.xcode }}.app
+      - name: Run tests
+        run: xcodebuild -project ./Example/Example.xcodeproj -scheme Example test -destination platform='iOS Simulator',name='${{ matrix.sim }}' -quiet -enableCodeCoverage YES -derivedDataPath "./output"

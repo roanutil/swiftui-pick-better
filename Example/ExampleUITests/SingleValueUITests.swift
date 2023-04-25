@@ -1,7 +1,7 @@
 // SingleValueUITests.swift
 // PickBetter
 //
-// Copyright © 2022 MFB Technologies, Inc. All rights reserved. All rights reserved.
+// Copyright © 2023 MFB Technologies, Inc. All rights reserved. All rights reserved.
 //
 // This source code is licensed under the MIT license found in the
 // LICENSE file in the root directory of this source tree.
@@ -26,7 +26,7 @@ final class SingleValueUITests: ExampleUITestCase {
         _ = try sectionNavItem().waitForExistence(timeout: 1)
         XCTAssert(try sectionNavItem().exists, "Navigation link/tab for 'Single' value picker must exist")
         #if os(tvOS)
-            guard try findVertically(try sectionNavItem(), method: .upOnly) else {
+            guard try findVertically(sectionNavItem(), method: .upOnly) else {
                 XCTFail("Failed to find navigation picker")
                 return
             }
@@ -42,11 +42,11 @@ final class SingleValueUITests: ExampleUITestCase {
         XCTAssert(try buttonZero().isSelected, "Initial state should have the first item selected which is '0'")
 
         #if os(tvOS)
-            guard try findVertically(try button(3), method: .downOnly) else {
+            guard try findVertically(button(3), method: .downOnly) else {
                 XCTFail("Failed to find '3' to select it.")
                 return
             }
-            guard try findHorizontally(try buttonZero(), method: .leftOnly) else {
+            guard try findHorizontally(buttonZero(), method: .leftOnly) else {
                 XCTFail("Failed to find '0'")
                 return
             }
@@ -56,7 +56,7 @@ final class SingleValueUITests: ExampleUITestCase {
         XCTAssert(try !buttonOne().isSelected, "'1' should not be selected before being tapped.")
 
         #if os(tvOS)
-            guard try findHorizontally(try buttonOne(), method: .rightOnly) else {
+            guard try findHorizontally(buttonOne(), method: .rightOnly) else {
                 XCTFail("Failed to find '1' to select it.")
                 return
             }
@@ -70,7 +70,7 @@ final class SingleValueUITests: ExampleUITestCase {
     func testGridStyleDeselectAndSelectNew() throws {
         _ = try gridStyleToggle().waitForExistence(timeout: 1)
         #if os(tvOS)
-            guard try findVertically(try gridStyleToggle(), method: .downOnly) else {
+            guard try findVertically(gridStyleToggle(), method: .downOnly) else {
                 XCTFail("Failed to find grid toggle")
                 return
             }
@@ -83,7 +83,7 @@ final class SingleValueUITests: ExampleUITestCase {
     func testListStyleDeselectAndSelectNew() throws {
         _ = try gridStyleToggle().waitForExistence(timeout: 1)
         #if os(tvOS)
-            guard try findVertically(try gridStyleToggle(), method: .downOnly) else {
+            guard try findVertically(gridStyleToggle(), method: .downOnly) else {
                 XCTFail("Failed to find grid toggle")
                 return
             }

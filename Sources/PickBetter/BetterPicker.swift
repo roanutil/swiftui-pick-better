@@ -1,7 +1,7 @@
 // BetterPicker.swift
 // PickBetter
 //
-// Copyright © 2022 MFB Technologies, Inc. All rights reserved. All rights reserved.
+// Copyright © 2023 MFB Technologies, Inc. All rights reserved. All rights reserved.
 //
 // This source code is licensed under the MIT license found in the
 // LICENSE file in the root directory of this source tree.
@@ -24,7 +24,7 @@ public struct BetterPicker<SelectionBox, ItemContent>: View where SelectionBox: 
     @Binding private var selection: SelectionBox
 
     public var body: some View {
-        self.betterPickerStyle(PlainInlineBetterPickerStyle())
+        betterPickerStyle(PlainInlineBetterPickerStyle())
     }
 
     /// Accessor function used by styles to build the view
@@ -102,12 +102,12 @@ public struct BetterPicker<SelectionBox, ItemContent>: View where SelectionBox: 
     ///     - selectionValue: `@escaping (Data.Element) -> SelectionValue`
     ///     - selection: `Binding<SelectionValue?>`
     ///     - content: `(Data.Element) -> ItemContent` -- View builder for a cell
-    public init<Data, WrappedSelectionValue>(
+    public init<Data, Selection>(
         _ data: Data,
         selectionValue: @escaping (Data.Element) -> SelectionValue,
-        selection: Binding<WrappedSelectionValue?>,
+        selection: Binding<Selection?>,
         @ViewBuilder content: @MainActor @escaping (Data.Element) -> ItemContent
-    ) where Data: Sequence, SelectionBox == WrappedSelectionValue? {
+    ) where Data: Sequence, SelectionBox == Selection? {
         self.init(
             items: Self.itemsFromData(data, selectionValue: selectionValue, content: content),
             selection: selection
@@ -165,12 +165,12 @@ extension BetterPicker {
     ///     - data: Data -- `Sequence` where  `Data.Element == SelectionValue`
     ///     - selection: `Binding<SelectionValue?>`
     ///     - content: `(Data.Element) -> ItemContent` -- View builder for a cell
-    public init<Data, WrappedSelectionValue>(
+    public init<Data, Selection>(
         _ data: Data,
-        selection: Binding<WrappedSelectionValue?>,
+        selection: Binding<Selection?>,
         @ViewBuilder content: @MainActor @escaping (Data.Element) -> ItemContent
-    ) where Data: Sequence, Data.Element == WrappedSelectionValue,
-        SelectionBox == WrappedSelectionValue?
+    ) where Data: Sequence, Data.Element == Selection,
+        SelectionBox == Selection?
     {
         self.init(
             items: Self.itemsFromData(data, selectionValue: { $0 }, content: content),
@@ -224,12 +224,12 @@ extension BetterPicker {
     ///     - data: Data -- `Sequence` where  `Data.Element: Identifiable`, `Data.Element.ID == SelectionValue`
     ///     - selection: `Binding<SelectionValue?>`
     ///     - content: `(Data.Element) -> ItemContent` -- View builder for a cell
-    public init<Data, WrappedSelectionValue>(
+    public init<Data, Selection>(
         _ data: Data,
-        selection: Binding<WrappedSelectionValue?>,
+        selection: Binding<Selection?>,
         @ViewBuilder content: @MainActor @escaping (Data.Element) -> ItemContent
-    ) where Data: Sequence, Data.Element: Identifiable, Data.Element.ID == WrappedSelectionValue,
-        SelectionBox == WrappedSelectionValue?
+    ) where Data: Sequence, Data.Element: Identifiable, Data.Element.ID == Selection,
+        SelectionBox == Selection?
     {
         self.init(
             items: Self.itemsFromData(data, selectionValue: \.id, content: content),

@@ -20,6 +20,7 @@ identifier_name:
         - _max
         - or
         - by
+        - up
 type_name:
     allowed_symbols: "_"
     excluded:

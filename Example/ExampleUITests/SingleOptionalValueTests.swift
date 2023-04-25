@@ -1,7 +1,7 @@
 // SingleOptionalValueTests.swift
 // PickBetter
 //
-// Copyright © 2022 MFB Technologies, Inc. All rights reserved. All rights reserved.
+// Copyright © 2023 MFB Technologies, Inc. All rights reserved. All rights reserved.
 //
 // This source code is licensed under the MIT license found in the
 // LICENSE file in the root directory of this source tree.
@@ -37,7 +37,7 @@ final class SingleOptionalValueUITests: ExampleUITestCase {
         XCTAssert(try buttonZero().exists, "Button Zero must exist")
         XCTAssert(try buttonOne().exists, "Button One must exist")
         XCTAssert(
-            try !buttonZero().isSelected && (try !buttonOne().isSelected),
+            try !buttonZero().isSelected && (!buttonOne().isSelected),
             "Initial state should have no item selected"
         )
 

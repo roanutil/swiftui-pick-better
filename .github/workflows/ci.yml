@@ -33,8 +33,11 @@ jobs:
             xcode: 14.2 # Swift 5.7
             sim: iPhone 14
           - os: macos-13
-            xcode: 14.3 # Swift 5.8
+            xcode: 14.3.1 # Swift 5.8
             sim: iPhone 14
+          - os: macos-13
+            xcode: 15.0 # Swift 5.9
+            sim: iPhone 15
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3

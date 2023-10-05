@@ -10,7 +10,6 @@ import Foundation
 import PickBetter
 import SwiftUI
 
-@MainActor
 public struct SingleValueSelection: View {
     private let items: [Item]
     private let isGridStyle: Bool

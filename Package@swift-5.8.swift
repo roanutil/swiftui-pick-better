@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.8
 
 import PackageDescription
 
@@ -20,3 +20,14 @@ let package = Package(
         .target(name: "PickBetter"),
     ]
 )
+
+package.targets.strictConcurrency()
+
+extension Array where Element == Target {
+    func strictConcurrency() {
+        forEach { target in
+            target.swiftSettings = (target.swiftSettings ?? [])
+                + [.enableUpcomingFeature("StrictConcurrency")]
+        }
+    }
+}

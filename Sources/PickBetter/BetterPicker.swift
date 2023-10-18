@@ -31,7 +31,7 @@ public struct BetterPicker<SelectionBox, ItemContent>: View where SelectionBox: 
     ///     - style: `Style` (BetterPickerStyle)
     /// - Returns
     ///     - `some View`
-    public func betterPickerStyle<Style: BetterPickerStyle>(_ style: Style) -> some View {
+    @MainActor public func betterPickerStyle<Style: BetterPickerStyle>(_ style: Style) -> some View {
         let styledItems: [(SelectionValue, () -> CellWrapper<Style.ListCellOutput>)] = items
             .map { item in
                 let configuration = Style.CellConfiguration(

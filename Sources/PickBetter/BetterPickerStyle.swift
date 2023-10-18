@@ -25,12 +25,12 @@ public protocol BetterPickerStyle {
     ///     - configuration: `BetterPickerStyleConfiguration`
     /// - Returns
     ///     - `ViewOutput`
-    func makeView(_ configuration: Configuration) -> ViewOutput
+    @ViewBuilder @MainActor func makeView(_ configuration: Configuration) -> ViewOutput
 
     /// Builds each cell view
     /// - Parameters
     ///     - configuration: `BetterPickerStyleListCellConfiguration`
     /// - Returns
     ///     - `ListCellOutput`
-    func makeListCell(_ configuration: CellConfiguration) -> ListCellOutput
+    @ViewBuilder @MainActor func makeListCell(_ configuration: CellConfiguration) -> ListCellOutput
 }

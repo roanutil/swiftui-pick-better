@@ -30,9 +30,6 @@ jobs:
             xcode: 13.4.1 # Swift 5.6
             sim: iPhone 13
           - os: macos-13
-            xcode: 14.2 # Swift 5.7
-            sim: iPhone 14
-          - os: macos-13
             xcode: 14.3.1 # Swift 5.8
             sim: iPhone 14
           - os: macos-13

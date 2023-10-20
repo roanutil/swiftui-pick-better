@@ -1,9 +1,9 @@
-// swift-tools-version:5.8
+// swift-tools-version: 5.8
 
 import PackageDescription
 
 let package = Package(
-    name: "swiftui-pick-better",
+    name: "Shared",
     platforms: [
         .iOS(.v15),
         .macOS(.v12),
@@ -12,13 +12,19 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "PickBetter",
-            targets: ["PickBetter"]
+            name: "Shared",
+            targets: ["Shared"]
         ),
+    ],
+    dependencies: [
+        .package(name: "swiftui-pick-better", path: "../../"),
     ],
     targets: [
         .target(
-            name: "PickBetter",
+            name: "Shared",
+            dependencies: [
+                .product(name: "PickBetter", package: "swiftui-pick-better"),
+            ],
             swiftSettings: [
                 .enableUpcomingFeature("BareSlashRegexLiterals"),
                 .enableUpcomingFeature("ConciseMagicFile"),

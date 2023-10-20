@@ -30,9 +30,6 @@ jobs:
             xcode: 13.4.1 # Swift 5.6
             sim: iPhone 13
           - os: macos-13
-            xcode: 14.2 # Swift 5.7
-            sim: iPhone 14
-          - os: macos-13
             xcode: 14.3.1 # Swift 5.8
             sim: iPhone 14
           - os: macos-13
@@ -43,5 +40,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Select Xcode ${{ matrix.xcode }}
         run: sudo xcode-select -s /Applications/Xcode_${{ matrix.xcode }}.app
+      - name: Boot simulator
+        run: xcrun simctl boot '${{ matrix.sim }}'
       - name: Run tests
         run: xcodebuild -project ./Example/Example.xcodeproj -scheme Example test -destination platform='iOS Simulator',name='${{ matrix.sim }}' -quiet -enableCodeCoverage YES -derivedDataPath "./output"

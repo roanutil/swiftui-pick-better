@@ -30,13 +30,14 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
     }
 
     /// Builds the overall picker ``View``.
+    @ViewBuilder
     public func makeView(_ configuration: Configuration) -> some View {
         /// Full width of the `View` for a cell.
         let cellWidth = (frameWidth / CGFloat(configuration.cellCount)) - 1.5
         /// Index of the selected cell.
         let selectCellIndex = configuration.selectionIndexSet.first
 
-        return ZStack(alignment: .leading) {
+        ZStack(alignment: .leading) {
             if let selectCellIndex {
                 /// Rounded background to display selected item
                 RoundedRectangle(cornerRadius: 6)

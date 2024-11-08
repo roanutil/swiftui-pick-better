@@ -37,11 +37,11 @@ class ExampleUITestCase: XCUITestCase {
         #if os(iOS)
             // iPad has a bug where view is blank when starting in portrait
             // Let's rotate it landscape and back to work around that bug.
-        Task { @MainActor in
-            XCUIDevice.shared.orientation = .portrait
-            XCUIDevice.shared.orientation = .landscapeRight
-            XCUIDevice.shared.orientation = .portrait
-        }
+            Task { @MainActor in
+                XCUIDevice.shared.orientation = .portrait
+                XCUIDevice.shared.orientation = .landscapeRight
+                XCUIDevice.shared.orientation = .portrait
+            }
         #endif
     }
 

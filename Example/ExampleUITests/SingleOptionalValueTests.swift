@@ -13,6 +13,7 @@ import XCTest
     import Example_macOS
 #endif
 
+@MainActor
 final class SingleOptionalValueUITests: ExampleUITestCase {
     override var _sectionNavItem: (() throws -> XCUIElement)? {
         singleOptionalValueNavItem

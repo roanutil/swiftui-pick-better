@@ -8,6 +8,7 @@
 
 import XCTest
 
+@MainActor
 class XCUITestCase: XCTestCase {
     private var _app: XCUIApplication?
 
@@ -33,11 +34,10 @@ class XCUITestCase: XCTestCase {
         NSCompoundPredicate(orPredicateWithSubpredicates: labels.map(elementPredicate(labeled:)))
     }
 
-    override func setUpWithError() throws {
+    override func setUp() async throws {
         _app = XCUIApplication()
         continueAfterFailure = false
-
-        try app().launch()
+        try? app().launch()
     }
 }
 

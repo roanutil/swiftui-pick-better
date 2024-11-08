@@ -113,49 +113,61 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
     struct SegmentedBetterPickerStyle_Previews: PreviewProvider {
         static var previews: some View {
             VStack {
-                SegmentedSelectionPreview()
+                BetterPickerSegmented()
+                ApplePickerSegmented()
+                BetterPickerSegmentedCustom()
                 Spacer()
             }
         }
     }
 
-    private struct SegmentedSelectionPreview: View {
+    private struct BetterPickerSegmented: View {
         @State private var selection: PreviewItem.ID? = items.first!.id
-
+        
         var body: some View {
-            VStack {
-                Text("BetterPicker Segmented Picker")
-                BetterPicker(items, selection: $selection, content: itemContent)
-                    .betterPickerStyle(
-                        SegmentedBetterPickerStyle(
-                            frameWidth: 160,
-                            horizontalCellAlignment: .center
-                        )
+            Text("BetterPicker Segmented Picker")
+            BetterPicker(items, selection: $selection, content: itemContent)
+                .betterPickerStyle(
+                    SegmentedBetterPickerStyle(
+                        frameWidth: 260,
+                        horizontalCellAlignment: .center
                     )
-                    .padding(12)
-
-                Text("Apple Segmented Picker")
-                Picker("Choose an option", selection: $selection) {
-                    ForEach(items) { item in
-                        item.image
-                            .tag(item.id)
-                    }
-                }
-                .frame(width: 150)
-                .pickerStyle(SegmentedPickerStyle())
+                )
                 .padding(12)
+        }
+    }
 
-                Text("BetterPicker Custom Style")
-                BetterPicker(items, selection: $selection, content: itemContentWithLabel)
-                    .betterPickerStyle(
-                        SegmentedBetterPickerStyle(
-                            frameWidth: 350,
-                            frameHeight: 64,
-                            horizontalCellAlignment: .trailing
-                        )
+    private struct ApplePickerSegmented: View {
+        @State private var selection: PreviewItem.ID? = items.first!.id
+        
+        var body: some View {
+            Text("Apple Segmented Picker")
+            Picker("Choose an option", selection: $selection) {
+                ForEach(items) { item in
+                    item.image
+                        .tag(item.id)
+                }
+            }
+            .frame(width: 150)
+            .pickerStyle(SegmentedPickerStyle())
+            .padding(12)
+        }
+    }
+
+    private struct BetterPickerSegmentedCustom: View {
+        @State private var selection: PreviewItem.ID? = items.first!.id
+        
+        var body: some View {
+            Text("BetterPicker Custom Style")
+            BetterPicker(items, selection: $selection, content: itemContentWithLabel)
+                .betterPickerStyle(
+                    SegmentedBetterPickerStyle(
+                        frameWidth: 350,
+                        frameHeight: 64,
+                        horizontalCellAlignment: .trailing
                     )
-                    .padding(12)
-            }.preferredColorScheme(.light)
+                )
+                .padding(12)
         }
     }
 #endif

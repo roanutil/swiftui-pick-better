@@ -84,18 +84,18 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
 #if DEBUG
     private struct PreviewItem: Identifiable, Sendable {
         let id: String
-        let image: Image
+        let imageString: String
     }
 
     private let items: [PreviewItem] = [
-        .init(id: "Label 1", image: Image(systemName: "list.bullet")),
-        .init(id: "Label 2", image: Image(systemName: "list.bullet")),
-        .init(id: "Label 3", image: Image(systemName: "list.bullet")),
+        .init(id: "Label 1", imageString: "list.bullet"),
+        .init(id: "Label 2", imageString: "list.bullet"),
+        .init(id: "Label 3", imageString: "list.bullet"),
     ]
 
     @MainActor
     private func itemContent(_ item: PreviewItem) -> some View {
-        item.image
+        Image(systemName: item.imageString)
             .resizable()
             .frame(width: 16, height: 12)
     }
@@ -105,7 +105,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
         HStack {
             Text(item.id)
             Spacer()
-            item.image
+            Image(systemName: item.imageString)
                 .resizable()
                 .frame(width: 16, height: 12)
         }
@@ -145,7 +145,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
             Text("Apple Segmented Picker")
             Picker("Choose an option", selection: $selection) {
                 ForEach(items) { item in
-                    item.image
+                    Image(systemName: item.imageString)
                         .tag(item.id)
                 }
             }

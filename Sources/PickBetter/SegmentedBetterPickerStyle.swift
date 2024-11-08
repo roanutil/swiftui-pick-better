@@ -123,7 +123,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
 
     private struct BetterPickerSegmented: View {
         @State private var selection: PreviewItem.ID? = items.first!.id
-        
+
         var body: some View {
             Text("BetterPicker Segmented Picker")
             BetterPicker(items, selection: $selection, content: itemContent)
@@ -139,7 +139,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
 
     private struct ApplePickerSegmented: View {
         @State private var selection: PreviewItem.ID? = items.first!.id
-        
+
         var body: some View {
             Text("Apple Segmented Picker")
             Picker("Choose an option", selection: $selection) {
@@ -156,7 +156,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
 
     private struct BetterPickerSegmentedCustom: View {
         @State private var selection: PreviewItem.ID? = items.first!.id
-        
+
         var body: some View {
             Text("BetterPicker Custom Style")
             BetterPicker(items, selection: $selection, content: itemContentWithLabel)

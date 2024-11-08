@@ -11,11 +11,13 @@ import SwiftUI
 /// 'Segmented' style that mimics Apple's PickerStyle.segmented
 public struct SegmentedBetterPickerStyle: BetterPickerStyle {
     /// Width of the entire Picker. Required property in order to calculate cell size correctly.
-    public var frameWidth: CGFloat
+    private var frameWidth: CGFloat
     /// Height of the entire Picker. Defaults to '32', the same height used in Apple's segmented Picker.
-    public var frameHeight: CGFloat
+    private var frameHeight: CGFloat
     /// Horizontal alignment for the inner ``View`` of the cells. Defaults to ``.center`` alignment.
-    public var horizontalCellAlignment: HorizontalAlignment
+    private var horizontalCellAlignment: HorizontalAlignment
+    
+    @Environment(\.colorScheme) var colorScheme
     
     /// Memberwise initializer
     public init(
@@ -30,9 +32,9 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
     
     /// Builds the overall picker ``View``.
     public func makeView(_ configuration: Configuration) -> some View {
-        /// Actual width of the `View` for a cell
+        /// Full width of the `View` for a cell.
         let cellWidth = (frameWidth / CGFloat(configuration.cellCount)) - 1.5
-        /// Index of the current cell
+        /// Index of the selected cell.
         let selectCellIndex = configuration.selectionIndices.first
         
         return ZStack(alignment: .leading) {
@@ -40,23 +42,20 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
                 /// Rounded background to display selected item
                 RoundedRectangle(cornerRadius: 6)
                     .fill(.white)
-                    .frame(
-                        width: cellWidth,
-                        height: (frameHeight - 4.0)
-                    )
+                    .frame(width: cellWidth, height: frameHeight)
                     .offset(x: CGFloat(selectCellIndex) * cellWidth)
                     .animation(.easeInOut(duration: 0.25), value: selectCellIndex)
-                    .padding(.leading, 2)
+                    .padding(2)
                     .shadow(color: .secondary.opacity(0.3), radius: 2, y: 1)
             }
 
             HStack {
                 configuration.listOutput
             }
-            .foregroundStyle(.black)
+            .foregroundStyle(colorScheme == .light ? .black : .white)
             .frame(width: frameWidth, height: frameHeight)
         }
-        .background(Color(red: 0.92, green: 0.92, blue: 0.92))
+        .background(Color(UIColor.systemGray6))
         .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 
@@ -85,15 +84,14 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
 
 #if DEBUG
     private struct PreviewItem: Identifiable, Sendable {
-        let id: UUID = UUID()
+        let id: String
         let image: Image
-        let label: String
     }
 
     private let items: [PreviewItem] = [
-        .init(image: Image(systemName: "list.bullet"), label: "Label 1"),
-        .init(image: Image(systemName: "list.bullet"), label: "Label 2"),
-        .init(image: Image(systemName: "list.bullet"), label: "Label 3"),
+        .init(id: "Label 1", image: Image(systemName: "list.bullet")),
+        .init(id: "Label 2", image: Image(systemName: "list.bullet")),
+        .init(id: "Label 3", image: Image(systemName: "list.bullet")),
     ]
 
     @MainActor
@@ -105,7 +103,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
     @MainActor
     private func itemContentWithLabel(_ item: PreviewItem) -> some View {
         HStack {
-            Text(item.label)
+            Text(item.id)
             Spacer()
             item.image
                 .resizable()
@@ -119,6 +117,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
                 SegmentedSelectionPreview()
                 Spacer()
             }
+            
         }
     }
 
@@ -158,7 +157,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
                         )
                     )
                     .padding(12)
-            }
+            }.preferredColorScheme(.light)
         }
     }
 #endif

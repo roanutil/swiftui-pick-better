@@ -38,7 +38,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
         let selectCellIndex = configuration.selectionIndexSet.first
 
         ZStack(alignment: .leading) {
-            if let selectCellIndex {
+            if let selectCellIndex = selectCellIndex {
                 /// Rounded background to display selected item
                 RoundedRectangle(cornerRadius: 6)
                     .fill(.white)

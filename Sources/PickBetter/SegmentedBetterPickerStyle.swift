@@ -18,8 +18,6 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
     /// Horizontal alignment for the inner ``View`` of the cells. Defaults to ``.center`` alignment.
     private var horizontalCellAlignment: HorizontalAlignment
 
-    @Environment(\.colorScheme) var colorScheme
-
     /// Memberwise initializer
     public init(
         frameWidth: CGFloat,
@@ -53,7 +51,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
             HStack {
                 configuration.listOutput
             }
-            .foregroundStyle(colorScheme == .light ? .black : .white)
+            .foregroundStyle(.black)
             .frame(width: frameWidth, height: frameHeight)
         }
         .background(Color(red: 0.92, green: 0.92, blue: 0.92))

@@ -35,7 +35,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
         /// Full width of the `View` for a cell.
         let cellWidth = (frameWidth / CGFloat(configuration.cellCount)) - 1.5
         /// Index of the selected cell.
-        let selectCellIndex = configuration.selectionIndices.first
+        let selectCellIndex = configuration.selectionIndexSet.first
         
         return ZStack(alignment: .leading) {
             if let selectCellIndex {

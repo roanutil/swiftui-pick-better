@@ -52,7 +52,7 @@ public struct BetterPicker<SelectionBox, ItemContent>: View where SelectionBox: 
             listOutput: AnyView(forEachStyledItems),
             cellCount: items.count,
             selectionCount: selection.count,
-            selectionIndices: IndexSet(items.enumerated().filter { selection.contains($1.0) }.map { $0.offset }),
+            selectionIndexSet: IndexSet(items.enumerated().filter { selection.contains($1.0) }.map { $0.offset }),
             selectionLabels: items.filter { selection.contains($0.0) }.map { AnyView($0.1()) }
         )
         let styledBody = style.makeView(configuration)

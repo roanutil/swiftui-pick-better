@@ -1,9 +1,10 @@
+// SegmentedBetterPickerStyle.swift
+// PickBetter
 //
-//  SegmentsBetterPickerStyle.swift
-//  swiftui-pick-better
+// Copyright © 2024 MFB Technologies, Inc. All rights reserved. All rights reserved.
 //
-//  Created by Ryan Jarvis on 11/5/24.
-//
+// This source code is licensed under the MIT license found in the
+// LICENSE file in the root directory of this source tree.
 
 import Foundation
 import SwiftUI
@@ -16,9 +17,9 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
     private var frameHeight: CGFloat
     /// Horizontal alignment for the inner ``View`` of the cells. Defaults to ``.center`` alignment.
     private var horizontalCellAlignment: HorizontalAlignment
-    
+
     @Environment(\.colorScheme) var colorScheme
-    
+
     /// Memberwise initializer
     public init(
         frameWidth: CGFloat,
@@ -29,14 +30,14 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
         self.frameHeight = frameHeight
         self.horizontalCellAlignment = horizontalCellAlignment
     }
-    
+
     /// Builds the overall picker ``View``.
     public func makeView(_ configuration: Configuration) -> some View {
         /// Full width of the `View` for a cell.
         let cellWidth = (frameWidth / CGFloat(configuration.cellCount)) - 1.5
         /// Index of the selected cell.
         let selectCellIndex = configuration.selectionIndexSet.first
-        
+
         return ZStack(alignment: .leading) {
             if let selectCellIndex {
                 /// Rounded background to display selected item
@@ -68,10 +69,10 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
                 if [.center, .trailing].contains(horizontalCellAlignment) {
                     Spacer()
                 }
-                
+
                 configuration.label()
                     .padding(.horizontal, 6)
-                
+
                 if [.center, .leading].contains(horizontalCellAlignment) {
                     Spacer()
                 }
@@ -100,6 +101,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
             .resizable()
             .frame(width: 16, height: 12)
     }
+
     @MainActor
     private func itemContentWithLabel(_ item: PreviewItem) -> some View {
         HStack {
@@ -117,7 +119,6 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
                 SegmentedSelectionPreview()
                 Spacer()
             }
-            
         }
     }
 
@@ -135,7 +136,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
                         )
                     )
                     .padding(12)
-                
+
                 Text("Apple Segmented Picker")
                 Picker("Choose an option", selection: $selection) {
                     ForEach(items) { item in
@@ -146,7 +147,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
                 .frame(width: 150)
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(12)
-                
+
                 Text("BetterPicker Custom Style")
                 BetterPicker(items, selection: $selection, content: itemContentWithLabel)
                     .betterPickerStyle(

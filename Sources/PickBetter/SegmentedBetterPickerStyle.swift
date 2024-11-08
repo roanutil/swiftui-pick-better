@@ -161,7 +161,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
                     SegmentedBetterPickerStyle(
                         frameWidth: 350,
                         frameHeight: 64,
-                        horizontalCellAlignment: .trailing
+                        horizontalCellAlignment: .leading
                     )
                 )
                 .padding(12)

@@ -30,7 +30,6 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
     }
 
     /// Builds the overall picker ``View``.
-    @ViewBuilder
     public func makeView(_ configuration: Configuration) -> some View {
         /// Full width of the `View` for a cell.
         let cellWidth = (frameWidth / CGFloat(configuration.cellCount)) - 1.5
@@ -93,18 +92,15 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
         .init(id: "Label 3", imageString: "list.bullet"),
     ]
 
-    @MainActor
     private func itemContent(_ item: PreviewItem) -> some View {
         Image(systemName: item.imageString)
             .resizable()
             .frame(width: 16, height: 12)
     }
 
-    @MainActor
     private func itemContentWithLabel(_ item: PreviewItem) -> some View {
         HStack {
             Text(item.id)
-            Spacer()
             Image(systemName: item.imageString)
                 .resizable()
                 .frame(width: 16, height: 12)

@@ -56,7 +56,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
             .foregroundStyle(colorScheme == .light ? .black : .white)
             .frame(width: frameWidth, height: frameHeight)
         }
-        .background(Color(UIColor.systemGray6))
+        .background(Color(red: 0.92, green: 0.92, blue: 0.92))
         .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 
@@ -78,7 +78,6 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
                 }
             }
         }
-        .foregroundStyle(.primary)
         .contentShape(Rectangle()) // Used to make the entire HStack tappable
     }
 }

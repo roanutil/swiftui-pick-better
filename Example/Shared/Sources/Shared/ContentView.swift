@@ -113,7 +113,7 @@ public struct ContentView: View {
     }
     
     private func segmentedPicker() -> some View {
-        SegmentedPickerView(items: Array(items.prefix(5)))
+        SegmentedPickerView(items: Array(items.prefix(3)))
     }
     
     private var segmentedNavLabel: some View {

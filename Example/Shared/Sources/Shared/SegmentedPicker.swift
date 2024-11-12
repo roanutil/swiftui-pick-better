@@ -19,7 +19,7 @@ public struct SegmentedPickerView: View {
 
     // MARK: Accessibility Ids
 
-    private var segmentedPicker: String { "segmentedPicker" }
+    private var segmentedPickerString: String { "segmentedPicker" }
     
     public struct SegmentedItemLabel: View {
         private let itemId: Int
@@ -29,10 +29,7 @@ public struct SegmentedPickerView: View {
         }
 
         public var body: some View {
-            HStack {
-                Text(String(itemId))
-                Image(systemName: "list.bullet")
-            }
+            Text("Segmented \(itemId)")
         }
     }
 
@@ -40,7 +37,7 @@ public struct SegmentedPickerView: View {
         LazyView(
             BetterPicker(items, selection: $selection, content: { SegmentedItemLabel(itemId: $0.id) })
                 .betterPickerStyle(SegmentedBetterPickerStyle(frameWidth: 500.0))
-                .accessibilityIdentifier(segmentedPicker)
+                .accessibilityIdentifier(segmentedPickerString)
         )
     }
 }

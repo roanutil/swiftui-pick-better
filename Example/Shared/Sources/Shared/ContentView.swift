@@ -111,11 +111,11 @@ public struct ContentView: View {
             .font(.title)
         #endif
     }
-    
+
     private func segmentedPicker() -> some View {
         SegmentedPickerView(items: Array(items.prefix(3)))
     }
-    
+
     private var segmentedNavLabel: some View {
         #if os(iOS)
             Image(systemName: "s.circle")

@@ -1,9 +1,10 @@
+// SegmentedPicker.swift
+// PickBetter
 //
-//  SegmentedPicker.swift
-//  Shared
+// Copyright © 2024 MFB Technologies, Inc. All rights reserved. All rights reserved.
 //
-//  Created by Ryan Jarvis on 11/8/24.
-//
+// This source code is licensed under the MIT license found in the
+// LICENSE file in the root directory of this source tree.
 
 import Foundation
 import PickBetter
@@ -20,7 +21,7 @@ public struct SegmentedPickerView: View {
     // MARK: Accessibility Ids
 
     private var segmentedPickerString: String { "segmentedPicker" }
-    
+
     public struct SegmentedItemLabel: View {
         private let itemId: Int
 

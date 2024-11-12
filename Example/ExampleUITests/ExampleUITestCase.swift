@@ -75,7 +75,7 @@ class ExampleUITestCase: XCUITestCase {
     func multiValueNavItem() throws -> XCUIElement {
         try allElements().matching(identifier: "multiValueSectionNavItem").firstMatch
     }
-    
+
     func segmentedNavItem() throws -> XCUIElement {
         try allElements().matching(identifier: "segmentedNavItem").firstMatch
     }
@@ -91,11 +91,11 @@ class ExampleUITestCase: XCUITestCase {
     func multiValuePicker() throws -> XCUIElement {
         try allElements().matching(identifier: "multiValuePicker").exactlyOneMatch()
     }
-    
+
     func segmentedPicker() throws -> XCUIElement {
         try allElements().matching(identifier: "segmentedPicker").firstMatch
     }
-    
+
     func segmentedButtonZero() throws -> XCUIElement {
         try allElements().children(matching: .button)
             .element(matching: elementCompoundOrPredicate(labeled: ["Segmented 0"]))

@@ -1,10 +1,10 @@
+// SegmentedUITests.swift
+// PickBetter
 //
-//  SegmentedUITests.swift
-//  Example
+// Copyright © 2024 MFB Technologies, Inc. All rights reserved. All rights reserved.
 //
-//  Created by Ryan Jarvis on 11/12/24.
-//
-
+// This source code is licensed under the MIT license found in the
+// LICENSE file in the root directory of this source tree.
 
 import XCTest
 #if os(iOS)
@@ -44,11 +44,20 @@ final class SegmentedUITests: ExampleUITestCase {
         XCTAssert(try !segmentedButtonZero().isSelected, "'0' should not be selected before being tapped.")
 
         try segmentedButtonTwo().trigger()
-        XCTAssert(try segmentedButtonTwo().isSelected, "'2' should still be selected without being tapped again to deselect")
+        XCTAssert(
+            try segmentedButtonTwo().isSelected,
+            "'2' should still be selected without being tapped again to deselect"
+        )
         XCTAssert(try !segmentedButtonOne().isSelected, "'1' should be selected after being tapped.")
 
         try segmentedButtonOne().trigger()
-        XCTAssert(try segmentedButtonOne().isSelected, "'1' should still be selected without being tapped again to deselect")
-        XCTAssert(try !segmentedButtonTwo().isSelected, "'2' should no longer be selected after being tapped again to deselect")
+        XCTAssert(
+            try segmentedButtonOne().isSelected,
+            "'1' should still be selected without being tapped again to deselect"
+        )
+        XCTAssert(
+            try !segmentedButtonTwo().isSelected,
+            "'2' should no longer be selected after being tapped again to deselect"
+        )
     }
 }

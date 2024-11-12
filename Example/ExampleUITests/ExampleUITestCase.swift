@@ -13,6 +13,7 @@ import XCTest
     import Example_macOS
 #endif
 
+@MainActor
 class ExampleUITestCase: XCUITestCase {
     var _sectionNavItem: (() throws -> XCUIElement)? {
         nil

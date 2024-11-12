@@ -15,7 +15,7 @@ import XCTest
 
 @MainActor
 class ExampleUITestCase: XCUITestCase {
-    var _sectionNavItem: (() throws -> XCUIElement)? {
+    var _sectionNavItem: (@MainActor () throws -> XCUIElement)? {
         nil
     }
 
@@ -23,7 +23,7 @@ class ExampleUITestCase: XCUITestCase {
         try XCTUnwrap(_sectionNavItem)()
     }
 
-    var _picker: (() throws -> XCUIElement)? {
+    var _picker: (@MainActor () throws -> XCUIElement)? {
         nil
     }
 

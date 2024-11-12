@@ -15,11 +15,13 @@ import XCTest
 
 @MainActor
 final class SingleOptionalValueUITests: ExampleUITestCase {
-    override var _sectionNavItem: (() throws -> XCUIElement)? {
+    @MainActor
+    override var _sectionNavItem: (@MainActor () throws -> XCUIElement)? {
         singleOptionalValueNavItem
     }
 
-    override var _picker: (() throws -> XCUIElement)? {
+    @MainActor
+    override var _picker: (@MainActor () throws -> XCUIElement)? {
         singleOptionalValuePicker
     }
 
@@ -55,14 +57,14 @@ final class SingleOptionalValueUITests: ExampleUITestCase {
         XCTAssert(try buttonOne().isSelected, "'1' should be selected after it is tapped.")
     }
 
-    func testGridStyleDeselectAndSelectNew() throws {
+    func testGridStyleDeselectAndSelectNew() async throws {
         _ = try gridStyleToggle().waitForExistence(timeout: 1)
         try setGridStyle()
 
         try sharedTestSteps()
     }
 
-    func testListStyleDeselectAndSelectNew() throws {
+    func testListStyleDeselectAndSelectNew() async throws {
         _ = try gridStyleToggle().waitForExistence(timeout: 1)
         try setListStyle()
 

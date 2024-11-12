@@ -15,11 +15,13 @@ import XCTest
 
 @MainActor
 final class SingleValueUITests: ExampleUITestCase {
-    override var _sectionNavItem: (() throws -> XCUIElement)? {
+    @MainActor
+    override var _sectionNavItem: (@MainActor () throws -> XCUIElement)? {
         singleValueNavItem
     }
 
-    override var _picker: (() throws -> XCUIElement)? {
+    @MainActor
+    override var _picker: (@MainActor () throws -> XCUIElement)? {
         singleValuePicker
     }
 
@@ -68,7 +70,7 @@ final class SingleValueUITests: ExampleUITestCase {
         XCTAssert(try !buttonZero().isSelected, "'0' should no longer be selected after tapping a new item.")
     }
 
-    func testGridStyleDeselectAndSelectNew() throws {
+    func testGridStyleDeselectAndSelectNew() async throws {
         _ = try gridStyleToggle().waitForExistence(timeout: 1)
         #if os(tvOS)
             guard try findVertically(gridStyleToggle(), method: .downOnly) else {
@@ -81,7 +83,7 @@ final class SingleValueUITests: ExampleUITestCase {
         try sharedTestSteps()
     }
 
-    func testListStyleDeselectAndSelectNew() throws {
+    func testListStyleDeselectAndSelectNew() async throws {
         _ = try gridStyleToggle().waitForExistence(timeout: 1)
         #if os(tvOS)
             guard try findVertically(gridStyleToggle(), method: .downOnly) else {

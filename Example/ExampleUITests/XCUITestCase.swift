@@ -8,6 +8,7 @@
 
 import XCTest
 
+@MainActor
 class XCUITestCase: XCTestCase {
     private var _app: XCUIApplication?
 
@@ -30,14 +31,18 @@ class XCUITestCase: XCTestCase {
     }
 
     func elementCompoundOrPredicate(labeled labels: Set<String>) -> NSPredicate {
-        NSCompoundPredicate(orPredicateWithSubpredicates: labels.map(elementPredicate(labeled:)))
+        let subpredicates = labels.map { label in
+            elementPredicate(labeled: label)
+        }
+        return NSCompoundPredicate(orPredicateWithSubpredicates: subpredicates)
     }
 
-    override func setUpWithError() throws {
-        _app = XCUIApplication()
-        continueAfterFailure = false
-
-        try app().launch()
+    override func setUp() async throws {
+        Task { @MainActor in
+            self._app = XCUIApplication()
+            self.continueAfterFailure = false
+            try? self.app().launch()
+        }
     }
 }
 
@@ -53,6 +58,7 @@ class XCUITestCase: XCTestCase {
             )
         }
 
+        @MainActor
         func currentFocus() throws -> XCUIElement {
             try allElements().descendants(matching: .any).element(matching: focusPredicate)
         }

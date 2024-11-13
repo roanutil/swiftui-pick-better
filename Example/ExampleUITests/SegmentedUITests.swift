@@ -14,15 +14,17 @@ import XCTest
 #endif
 
 final class SegmentedUITests: ExampleUITestCase {
-    override var _sectionNavItem: (() throws -> XCUIElement)? {
+    @MainActor
+    override var _sectionNavItem: (@MainActor () throws -> XCUIElement)? {
         segmentedNavItem
     }
 
-    override var _picker: (() throws -> XCUIElement)? {
+    @MainActor
+    override var _picker: (@MainActor () throws -> XCUIElement)? {
         segmentedPicker
     }
 
-    func testSelectSegmentedPickerItems() throws {
+    func testSelectSegmentedPickerItems() async throws {
         _ = try sectionNavItem().waitForExistence(timeout: 1)
         XCTAssert(try sectionNavItem().exists, "Navigation link/tab for 'Segmented' picker must exist")
         try sectionNavItem().trigger()

@@ -43,4 +43,4 @@ jobs:
       - name: Boot simulator
         run: xcrun simctl boot '${{ matrix.sim }}'
       - name: Run tests
-        run: xcodebuild -project ./Example/Example.xcodeproj -scheme Example test -destination platform='iOS Simulator',name='${{ matrix.sim }}' -enableCodeCoverage YES -derivedDataPath "./output"
+        run: xcodebuild -project ./Example/Example.xcodeproj -scheme Example test -destination platform='iOS Simulator',name='${{ matrix.sim }}' -quiet -enableCodeCoverage YES -derivedDataPath "./output"

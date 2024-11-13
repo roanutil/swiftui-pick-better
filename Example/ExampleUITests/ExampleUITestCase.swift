@@ -15,7 +15,7 @@ import XCTest
 
 @MainActor
 class ExampleUITestCase: XCUITestCase {
-    var _sectionNavItem: (() throws -> XCUIElement)? {
+    var _sectionNavItem: (@MainActor () throws -> XCUIElement)? {
         nil
     }
 
@@ -23,7 +23,7 @@ class ExampleUITestCase: XCUITestCase {
         try XCTUnwrap(_sectionNavItem)()
     }
 
-    var _picker: (() throws -> XCUIElement)? {
+    var _picker: (@MainActor () throws -> XCUIElement)? {
         nil
     }
 
@@ -37,9 +37,11 @@ class ExampleUITestCase: XCUITestCase {
         #if os(iOS)
             // iPad has a bug where view is blank when starting in portrait
             // Let's rotate it landscape and back to work around that bug.
-            XCUIDevice.shared.orientation = .portrait
-            XCUIDevice.shared.orientation = .landscapeRight
-            XCUIDevice.shared.orientation = .portrait
+            Task { @MainActor in
+                XCUIDevice.shared.orientation = .portrait
+                XCUIDevice.shared.orientation = .landscapeRight
+                XCUIDevice.shared.orientation = .portrait
+            }
         #endif
     }
 

@@ -9,6 +9,7 @@
 import XCTest
 
 extension XCUIElementQuery {
+    @MainActor
     public func exactlyOneMatch() throws -> XCUIElement {
         XCTAssertEqual(count, 1, "Requiring only one element match the query resulting in `self`")
         return firstMatch

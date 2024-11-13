@@ -20,7 +20,6 @@ class XCUITestCase: XCTestCase {
         try app().descendants(matching: .any)
     }
 
-    @MainActor
     func elementPredicate(labeled label: String) -> NSPredicate {
         NSComparisonPredicate(
             leftExpression: NSExpression(forKeyPath: \XCUIElement.label),

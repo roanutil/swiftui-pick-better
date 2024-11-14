@@ -17,7 +17,10 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
     private let frameHeight: CGFloat
     /// Horizontal alignment for the inner ``View`` of the cells. Defaults to ``.center`` alignment.
     private let horizontalCellAlignment: HorizontalAlignment
-
+    
+    /// Static value for the amount of padding between cell selection frame and parent frame
+    private let cellSelectionPadding: CGFloat = 2.0
+    
     /// Memberwise initializer
     public init(
         frameWidth: CGFloat,
@@ -41,10 +44,10 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
                 /// Rounded background to display selected item
                 RoundedRectangle(cornerRadius: 6)
                     .fill(.white)
-                    .frame(width: cellWidth, height: frameHeight)
+                    .frame(width: cellWidth, height: frameHeight - (cellSelectionPadding * 2))
                     .offset(x: CGFloat(selectCellIndex) * cellWidth)
                     .animation(.easeInOut(duration: 0.25), value: selectCellIndex)
-                    .padding(2)
+                    .padding(cellSelectionPadding)
                     .shadow(color: .secondary.opacity(0.3), radius: 2, y: 1)
             }
             

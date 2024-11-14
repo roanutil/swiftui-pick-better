@@ -47,6 +47,12 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
                     .padding(2)
                     .shadow(color: .secondary.opacity(0.3), radius: 2, y: 1)
             }
+            
+            addCellDividers(
+                cellCount: configuration.cellCount,
+                cellWidth: cellWidth,
+                selectCellIndex: selectCellIndex
+            )
 
             HStack {
                 configuration.listOutput
@@ -67,16 +73,45 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
                 if [.center, .trailing].contains(horizontalCellAlignment) {
                     Spacer()
                 }
-
+                
                 configuration.label()
                     .padding(.horizontal, 6)
-
+                
                 if [.center, .leading].contains(horizontalCellAlignment) {
                     Spacer()
                 }
             }
         }
         .contentShape(Rectangle()) // Used to make the entire HStack tappable
+    }
+    
+    /// Adds dividers between cells
+    public func addCellDividers(
+        cellCount: Int,
+        cellWidth: CGFloat,
+        selectCellIndex: IndexSet.Element?
+    ) -> some View {
+        ForEach(1..<cellCount, id: \.self) { index in
+            // Ignore cells that are touching the selectedCell
+            if let selectCellIndex = selectCellIndex {
+                if index != selectCellIndex + 1, index != selectCellIndex {
+                    cellDivider(index: index, cellWidth: cellWidth)
+                }
+            } else {
+                cellDivider(index: index, cellWidth: cellWidth)
+            }
+        }
+    }
+    
+    /// Draw divider between cells
+    private func cellDivider(
+        index: IndexSet.Element,
+        cellWidth: CGFloat
+    ) -> some View {
+        Rectangle()
+            .frame(width: 1, height: frameHeight - 16)
+            .offset(x: CGFloat(index) * cellWidth)
+            .foregroundColor(.gray.opacity(0.4))
     }
 }
 
@@ -111,6 +146,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
         static var previews: some View {
             VStack {
                 BetterPickerSegmented()
+                BetterPickerSegmentedNoneSelected()
                 ApplePickerSegmented()
                 BetterPickerSegmentedCustom()
                 Spacer()
@@ -120,6 +156,22 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
 
     private struct BetterPickerSegmented: View {
         @State private var selection: PreviewItem.ID? = items.first!.id
+
+        var body: some View {
+            Text("BetterPicker Segmented Picker")
+            BetterPicker(items, selection: $selection, content: itemContent)
+                .betterPickerStyle(
+                    SegmentedBetterPickerStyle(
+                        frameWidth: 260,
+                        horizontalCellAlignment: .center
+                    )
+                )
+                .padding(12)
+        }
+    }
+
+    private struct BetterPickerSegmentedNoneSelected: View {
+        @State private var selection: PreviewItem.ID? = nil
 
         var body: some View {
             Text("BetterPicker Segmented Picker")

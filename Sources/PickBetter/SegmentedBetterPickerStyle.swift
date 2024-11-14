@@ -17,10 +17,10 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
     private let frameHeight: CGFloat
     /// Horizontal alignment for the inner ``View`` of the cells. Defaults to ``.center`` alignment.
     private let horizontalCellAlignment: HorizontalAlignment
-    
+
     /// Static value for the amount of padding between cell selection frame and parent frame
     private let cellSelectionPadding: CGFloat = 2.0
-    
+
     /// Memberwise initializer
     public init(
         frameWidth: CGFloat,
@@ -50,7 +50,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
                     .padding(cellSelectionPadding)
                     .shadow(color: .secondary.opacity(0.3), radius: 2, y: 1)
             }
-            
+
             addCellDividers(
                 cellCount: configuration.cellCount,
                 cellWidth: cellWidth,
@@ -76,10 +76,10 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
                 if [.center, .trailing].contains(horizontalCellAlignment) {
                     Spacer()
                 }
-                
+
                 configuration.label()
                     .padding(.horizontal, 6)
-                
+
                 if [.center, .leading].contains(horizontalCellAlignment) {
                     Spacer()
                 }
@@ -87,14 +87,14 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
         }
         .contentShape(Rectangle()) // Used to make the entire HStack tappable
     }
-    
+
     /// Adds dividers between cells
     public func addCellDividers(
         cellCount: Int,
         cellWidth: CGFloat,
         selectCellIndex: IndexSet.Element?
     ) -> some View {
-        ForEach(1..<cellCount, id: \.self) { index in
+        ForEach(1 ..< cellCount, id: \.self) { index in
             // Ignore cells that are touching the selectedCell
             if let selectCellIndex = selectCellIndex {
                 if index != selectCellIndex + 1, index != selectCellIndex {
@@ -105,7 +105,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
             }
         }
     }
-    
+
     /// Draw divider between cells
     private func cellDivider(
         index: IndexSet.Element,
@@ -174,7 +174,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
     }
 
     private struct BetterPickerSegmentedNoneSelected: View {
-        @State private var selection: PreviewItem.ID? = nil
+        @State private var selection: PreviewItem.ID?
 
         var body: some View {
             Text("BetterPicker Segmented Picker")

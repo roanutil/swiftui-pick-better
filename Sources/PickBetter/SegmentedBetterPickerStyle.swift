@@ -128,6 +128,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
         .init(id: "Label 1", imageString: "list.bullet"),
         .init(id: "Label 2", imageString: "list.bullet"),
         .init(id: "Label 3", imageString: "list.bullet"),
+        .init(id: "Label 4", imageString: "list.bullet"),
     ]
 
     private func itemContent(_ item: PreviewItem) -> some View {
@@ -177,7 +178,7 @@ public struct SegmentedBetterPickerStyle: BetterPickerStyle {
         @State private var selection: PreviewItem.ID?
 
         var body: some View {
-            Text("BetterPicker Segmented Picker")
+            Text("BetterPicker Segmented Picker nil selection")
             BetterPicker(items, selection: $selection, content: itemContent)
                 .betterPickerStyle(
                     SegmentedBetterPickerStyle(

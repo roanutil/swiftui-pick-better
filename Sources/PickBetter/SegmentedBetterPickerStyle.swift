@@ -12,11 +12,11 @@ import SwiftUI
 /// 'Segmented' style that mimics Apple's PickerStyle.segmented
 public struct SegmentedBetterPickerStyle: BetterPickerStyle {
     /// Width of the entire Picker. Required property in order to calculate cell size correctly.
-    private var frameWidth: CGFloat
+    private let frameWidth: CGFloat
     /// Height of the entire Picker. Defaults to '32', the same height used in Apple's segmented Picker.
-    private var frameHeight: CGFloat
+    private let frameHeight: CGFloat
     /// Horizontal alignment for the inner ``View`` of the cells. Defaults to ``.center`` alignment.
-    private var horizontalCellAlignment: HorizontalAlignment
+    private let horizontalCellAlignment: HorizontalAlignment
 
     /// Memberwise initializer
     public init(

@@ -79,6 +79,10 @@ class ExampleUITestCase: XCUITestCase {
         try allElements().matching(identifier: "multiValueSectionNavItem").firstMatch
     }
 
+    func segmentedNavItem() throws -> XCUIElement {
+        try allElements().matching(identifier: "segmentedNavItem").firstMatch
+    }
+
     func singleValuePicker() throws -> XCUIElement {
         try allElements().matching(identifier: "singleValuePicker").exactlyOneMatch()
     }
@@ -89,6 +93,25 @@ class ExampleUITestCase: XCUITestCase {
 
     func multiValuePicker() throws -> XCUIElement {
         try allElements().matching(identifier: "multiValuePicker").exactlyOneMatch()
+    }
+
+    func segmentedPicker() throws -> XCUIElement {
+        try allElements().matching(identifier: "segmentedPicker").firstMatch
+    }
+
+    func segmentedButtonZero() throws -> XCUIElement {
+        try allElements().children(matching: .button)
+            .element(matching: elementCompoundOrPredicate(labeled: ["Segmented 0"]))
+    }
+
+    func segmentedButtonOne() throws -> XCUIElement {
+        try allElements().children(matching: .button)
+            .element(matching: elementCompoundOrPredicate(labeled: ["Segmented 1"]))
+    }
+
+    func segmentedButtonTwo() throws -> XCUIElement {
+        try allElements().children(matching: .button)
+            .element(matching: elementCompoundOrPredicate(labeled: ["Segmented 2"]))
     }
 
     func cellZero() throws -> XCUIElement {

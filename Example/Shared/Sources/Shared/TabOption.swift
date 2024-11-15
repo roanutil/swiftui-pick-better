@@ -12,4 +12,5 @@ public enum TabOption: Hashable, Sendable {
     case singleValue
     case singleOptionalValue
     case multiValue
+    case segmented
 }

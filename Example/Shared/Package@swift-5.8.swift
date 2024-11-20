@@ -1,4 +1,4 @@
-// swift-tools-version: 5.5
+// swift-tools-version: 5.8
 
 import PackageDescription
 
@@ -24,6 +24,14 @@ let package = Package(
             name: "Shared",
             dependencies: [
                 .product(name: "PickBetter", package: "swiftui-pick-better"),
+            ],
+            swiftSettings: [
+                .enableUpcomingFeature("BareSlashRegexLiterals"),
+                .enableUpcomingFeature("ConciseMagicFile"),
+                .enableUpcomingFeature("ExistentialAny"),
+                .enableUpcomingFeature("ForwardTrailingClosures"),
+                .enableUpcomingFeature("ImplicitOpenExistentials"),
+                .enableUpcomingFeature("StrictConcurrency"),
             ]
         ),
     ]

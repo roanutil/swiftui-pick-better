@@ -1,7 +1,7 @@
 // PlainInlineBetterPickerStyle.swift
 // PickBetter
 //
-// Copyright © 2023 MFB Technologies, Inc. All rights reserved. All rights reserved.
+// Copyright © 2024 MFB Technologies, Inc. All rights reserved. All rights reserved.
 //
 // This source code is licensed under the MIT license found in the
 // LICENSE file in the root directory of this source tree.
@@ -40,14 +40,12 @@ public struct PlainInlineBetterPickerStyle: BetterPickerStyle {
         let id: String
     }
 
-    @MainActor
-    private var items: [PreviewItem] = ["A", "B", "C"].map { PreviewItem(id: $0) }
+    private let items: [PreviewItem] = ["A", "B", "C"].map { PreviewItem(id: $0) }
 
     private func itemContent(_ item: PreviewItem) -> some View {
         Text(item.id)
     }
 
-    @MainActor
     struct PlainInlineBetterPickerStyle_Previews: PreviewProvider {
         static var previews: some View {
             Group {
@@ -58,7 +56,6 @@ public struct PlainInlineBetterPickerStyle: BetterPickerStyle {
         }
     }
 
-    @MainActor
     private struct OptionalSelectionPreview: View {
         @State private var selection: PreviewItem.ID?
 
@@ -71,7 +68,6 @@ public struct PlainInlineBetterPickerStyle: BetterPickerStyle {
         }
     }
 
-    @MainActor
     private struct SingleSelectionPreview: View {
         @State private var selection: PreviewItem.ID = items.first!.id
 
@@ -84,7 +80,6 @@ public struct PlainInlineBetterPickerStyle: BetterPickerStyle {
         }
     }
 
-    @MainActor
     private struct MultiSelectionPreview: View {
         @State private var selection: Set<PreviewItem.ID> = []
 

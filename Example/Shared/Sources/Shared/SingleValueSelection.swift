@@ -1,7 +1,7 @@
 // SingleValueSelection.swift
 // PickBetter
 //
-// Copyright © 2023 MFB Technologies, Inc. All rights reserved. All rights reserved.
+// Copyright © 2024 MFB Technologies, Inc. All rights reserved. All rights reserved.
 //
 // This source code is licensed under the MIT license found in the
 // LICENSE file in the root directory of this source tree.
@@ -10,7 +10,6 @@ import Foundation
 import PickBetter
 import SwiftUI
 
-@MainActor
 public struct SingleValueSelection: View {
     private let items: [Item]
     private let isGridStyle: Bool

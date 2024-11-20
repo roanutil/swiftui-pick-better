@@ -26,6 +26,7 @@
 		49E598B127B230AF00C1F2CF /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E598B027B230AF00C1F2CF /* ExampleApp.swift */; };
 		49E598B827B230AF00C1F2CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E598B727B230AF00C1F2CF /* Preview Assets.xcassets */; };
 		49E598CC27B230AF00C1F2CF /* SingleValueUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E598CB27B230AF00C1F2CF /* SingleValueUITests.swift */; };
+		94AB9E8C2CE39FDC008967E2 /* SegmentedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AB9E8B2CE39FD5008967E2 /* SegmentedUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		49E598C727B230AF00C1F2CF /* ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E598CB27B230AF00C1F2CF /* SingleValueUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleValueUITests.swift; sourceTree = "<group>"; };
 		49E598DB27B2312500C1F2CF /* swiftui-pick-better */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "swiftui-pick-better"; path = ..; sourceTree = "<group>"; };
+		94AB9E8B2CE39FD5008967E2 /* SegmentedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 		49E598CA27B230AF00C1F2CF /* ExampleUITests */ = {
 			isa = PBXGroup;
 			children = (
+				94AB9E8B2CE39FD5008967E2 /* SegmentedUITests.swift */,
 				4994CA8727EE729C00F54306 /* MutliValueUITests.swift */,
 				49E598CB27B230AF00C1F2CF /* SingleValueUITests.swift */,
 				4994CA6F27EE23C100F54306 /* SingleOptionalValueTests.swift */,
@@ -403,6 +406,7 @@
 				49A241AE2800E7BA003DD15F /* XCUIElement+Trigger.swift in Sources */,
 				4994CA7027EE23C100F54306 /* SingleOptionalValueTests.swift in Sources */,
 				4994CA8027EE2B6E00F54306 /* XCUIElementQuery+ExactlyOneMatching.swift in Sources */,
+				94AB9E8C2CE39FDC008967E2 /* SegmentedUITests.swift in Sources */,
 				4994CA8927EE72B300F54306 /* MutliValueUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,7 +443,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mfbtech.picker-better.Example-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -472,7 +476,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mfbtech.picker-better.Example-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -510,7 +514,7 @@
 				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 14.0;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 			};
 			name = Debug;
 		};
@@ -540,7 +544,7 @@
 				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 14.0;
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 			};
 			name = Release;
 		};
@@ -595,13 +599,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -650,12 +656,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -677,7 +685,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -715,7 +723,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
